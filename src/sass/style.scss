@@ -1,0 +1,119 @@
+//Colours
+$fontColour: rgb(235, 235, 235);
+$bgColour: #ffa07a;
+
+//Fonts
+$montserrat: 'Montserrat', sans-serif;
+
+*{
+    box-sizing: border-box; //makes responsive layouts more manageable (factors in border, padding & width into boxes size)
+    margin: 0px;
+    padding: 0px;
+}
+
+nav{
+    align-items: center; //centers perfectly
+    background-color: $bgColour;
+    display: flex; //flexbox
+    font-family: $montserrat;
+    justify-content: space-around; //distributes items evenly in line with equal space around them
+    min-height: 8vh;  //8% Viewport Height
+    position: sticky;
+    top: 0;
+}
+
+.logo{
+    color: $fontColour;
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around; 
+    width: 50%; //space between links
+    a{
+        color: $fontColour;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        text-decoration: none;
+    }
+    li{
+        list-style: none; //gets rid of the bullet points
+    }
+}
+
+.burger{
+    cursor: pointer; //pointer when you hover over
+    display: none; //hide
+    div{
+        background-color: $fontColour;
+        height: 3px;
+        margin: 5px;
+        transition: all 0.3s ease; //transition to make it smoother
+        width: 25px;
+    }
+}
+
+//to make it look better responisvely
+@media screen and (max-width: 1024px){
+    .nav-links{
+        width: 60%;  //space between items 
+    }
+}
+
+//mobile
+@media screen and (max-width: 768px){
+    .body, html{
+        overflow-x: hidden; //no scroll
+    }
+    .nav-links{
+        align-items: center;
+        background-color: $bgColour;
+        flex-direction: column; //creates columns
+        height: 92vh; //we used 8vh before, so now 92 (100-8)
+        position: fixed; 
+        right: 0px;
+        top: 8vh;
+        transform: translateX(100%); //hides container off screen
+        transition: transform 0.5s ease-in; //transition to make it smoother
+        width: 50%; //width container
+        li{
+            opacity: 0; //hides items
+        }
+    }
+    .burger{
+        display: block; //unhide
+    }
+}
+
+.nav-active{
+    transform: translateX(0%); //unhides container
+}
+
+//css animation
+@keyframes navLinkFade {
+    from{
+        opacity: 0; //hide items
+        transform: translateX(50px); //add movement (slide)
+    }
+    to{
+        opacity: 1; //unhide items
+        transform: translateX(0px); //remove movement
+    }
+}
+
+//create toggle: hamburger menu to X
+.toggle {
+    .line1{
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .line2{
+        opacity: 0; //hide 2nd line
+    }
+    .line3{
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
